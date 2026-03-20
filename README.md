@@ -7,11 +7,14 @@ Jonathan Esteban
 ## Diagrama UML (plantUML):
 
 @startuml
+
+' ---------------- INTERFACE ----------------
 interface Instrumento {
     +tocar()
     +preparar()
 }
 
+' ---------------- INSTRUMENTOS ----------------
 class Guitarra {
     +afinar()
     +tocar()
@@ -28,6 +31,11 @@ class Tambor {
     +tocar()
     +preparar()
 }
+
+class InstrumentoFactory {
+    +crearInstrumentoAleatorio() : Instrumento
+}
+' ---------------- MUSICO ----------------
 class Musico {
     -nombre : String
     -instrumento : Instrumento
@@ -36,6 +44,7 @@ class Musico {
     +tocar()
 }
 
+' ---------------- CHISGA ----------------
 class Chisga {
     -nombre : String
     -musicos : List<Musico>
@@ -49,14 +58,20 @@ class CrearChisga {
 +main(String[] args)
 }
 
+' ---------------- RELACIONES ----------------
 
 Instrumento <|.. Guitarra
 Instrumento <|.. Violin
 Instrumento <|.. Tambor
 
 CrearChisga --> Chisga
+CrearChisga --> InstrumentoFactory
 Musico --> Instrumento : usa
 Chisga "1" o-- "*" Musico : contiene
 
-@enduml
+InstrumentoFactory --> Instrumento : crea
+InstrumentoFactory --> Guitarra
+InstrumentoFactory --> Violin
+InstrumentoFactory --> Tambor
 
+@enduml
