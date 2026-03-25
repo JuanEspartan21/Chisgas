@@ -2,7 +2,7 @@
 
 ## Integrantes:
 Juan Steban Valbuena Nuncira - 20232020340
-Jonathan Esteban
+Jonathan Esteban Cruz Fuentes - 20231020098
 
 ## Diagrama UML (plantUML):
 
